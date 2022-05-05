@@ -30,9 +30,9 @@ class Form {
             }
             else {
                 const book = {
-                    nome: this.inputs[0].value,
-                    autor: this.inputs[1].value,
-                    editora: this.inputs[2].value,
+                    nome: this.inputs[0].value.normalize().trim(),
+                    autor: this.inputs[1].value.normalize().trim(),
+                    editora: this.inputs[2].value.normalize().trim(),
                     ano: parseInt(this.inputs[3].value)
                 };
                 fetch("https://academico.espm.br/testeapi/livro/criar", {
@@ -78,8 +78,8 @@ class Data {
         }
         this.getMethod();
     }
-    async getMethod() {
-        await fetch("https://academico.espm.br/testeapi/livro/listar", {
+    getMethod() {
+        fetch("https://academico.espm.br/testeapi/livro/listar", {
             method: "GET"
         })
             .then(response => response.json())

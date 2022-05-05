@@ -44,9 +44,9 @@ class Form {
                 alert('Error: O campo "Ano" deve ser um número ou um número maior que 0!')
             } else {
                 const book: Book = {
-                    nome: this.inputs[0].value,
-                    autor: this.inputs[1].value,
-                    editora: this.inputs[2].value,
+                    nome: this.inputs[0].value.normalize().trim(),
+                    autor: this.inputs[1].value.normalize().trim(),
+                    editora: this.inputs[2].value.normalize().trim(),
                     ano: parseInt(this.inputs[3].value)
                 }
     
@@ -99,8 +99,8 @@ class Data {
         this.getMethod();
     }
 
-    public async getMethod(): Promise<void> {
-        await fetch("https://academico.espm.br/testeapi/livro/listar",
+    public getMethod(): void {
+        fetch("https://academico.espm.br/testeapi/livro/listar",
         {
             method: "GET"
         })
